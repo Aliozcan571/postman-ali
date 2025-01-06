@@ -127,33 +127,6 @@
 							"response": []
 						},
 						{
-							"name": "Kişi Görüntüleme",
-							"id": "644841e0-eb77-4ed3-a828-88b63a7906cf",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "https://api.useasa.com/api/home/members/{{yenikisi_Id}}",
-									"protocol": "https",
-									"host": [
-										"api",
-										"useasa",
-										"com"
-									],
-									"path": [
-										"api",
-										"home",
-										"members",
-										"{{yenikisi_Id}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Kişi Güncelleme",
 							"event": [
 								{
