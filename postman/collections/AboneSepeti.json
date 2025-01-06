@@ -1,0 +1,475 @@
+{
+	"info": {
+		"_postman_id": "fdd0a323-8b49-48c3-9168-054a2ba20e1c",
+		"name": "AboneSepeti",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "31861302-fdd0a323-8b49-48c3-9168-054a2ba20e1c"
+	},
+	"item": [
+		{
+			"name": "ALİ",
+			"item": [
+				{
+					"name": "Token",
+					"item": [
+						{
+							"name": "Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "31259018-8af5-4e2e-913d-55eacd04aad9",
+										"exec": [
+											"pm.collectionVariables.set(\"token\", pm.response.json().accessToken);\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "680525d8-d605-4cd3-a0f1-5b0ee04b6327",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"username\": \"aliozcan.qa@gmail.com\", \"password\": \"ali571\", \"platform\": \"web\"}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api.useasa.com/api/auth/login",
+									"protocol": "https",
+									"host": [
+										"api",
+										"useasa",
+										"com"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "a3e7fdf9-d1a5-4657-9457-8716aa512b63"
+				},
+				{
+					"name": "Kişilerim",
+					"item": [
+						{
+							"name": "Kişi Ekleme",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e38ab2fa-e27d-4d70-9111-f038b0e8be21",
+										"exec": [
+											"pm.test(\"Save the id to collection\", function () {\r",
+											"    pm.collectionVariables.set(\"yenikisi_Id\", pm.response.json().id);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "ceed5082-004d-4b90-907d-ab3e409998ca",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\": \"ali özcann\", \"phone\": \"5244144444\", \"phoneCountry\": \"90\"}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api.useasa.com/api/home/66fee41b2b0808194acfe70c/members/add",
+									"protocol": "https",
+									"host": [
+										"api",
+										"useasa",
+										"com"
+									],
+									"path": [
+										"api",
+										"home",
+										"66fee41b2b0808194acfe70c",
+										"members",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Kişi Görüntüleme",
+							"id": "644841e0-eb77-4ed3-a828-88b63a7906cf",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.useasa.com/api/home/members/{{yenikisi_Id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"useasa",
+										"com"
+									],
+									"path": [
+										"api",
+										"home",
+										"members",
+										"{{yenikisi_Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Kişi Güncelleme",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a56cb435-f26d-4f9c-8d96-82c5014e9076",
+										"exec": [
+											"pm.test(\"Save the id to collection\", function () {\r",
+											"    pm.collectionVariables.set(\"yenikisi_Id\", pm.response.json().id);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "1a5bb3f4-4f4c-4f01-a3bf-2adeed2a0c14",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\": \"ali ÖZCAN\", \"phone\": \"5244144444\", \"phoneCountry\": \"90\"}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api.useasa.com/api/home/members/edit/{{yenikisi_Id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"useasa",
+										"com"
+									],
+									"path": [
+										"api",
+										"home",
+										"members",
+										"edit",
+										"{{yenikisi_Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Kişi Silme",
+							"id": "977044bd-7d49-4b9b-a1e5-8a6620bd5f51",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.useasa.com/api/home/members/delete/{{yenikisi_Id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"useasa",
+										"com"
+									],
+									"path": [
+										"api",
+										"home",
+										"members",
+										"delete",
+										"{{yenikisi_Id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "d2d2bc5a-feca-40aa-8fc3-f8605b35f3c7"
+				},
+				{
+					"name": "Hanelerim",
+					"item": [
+						{
+							"name": "Hane Ekle",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "60cc5132-b524-4be9-b4d6-84476dd26022",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Save id to collection variable\", function () {\r",
+											"    pm.collectionVariables.set(\"hane_Id\", pm.response.json().id);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3d194f5f-3dfb-48b2-b813-674461da9e35",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"aliiiiii\",\r\n    \"iconId\": \"6277b858eb6a2cc9c58a1388\",\r\n    \"address\": {\r\n        \"city\": \"İstanbul\",\r\n        \"district\": \"Büyükçekmece\",\r\n        \"path\": \"19 Mayıs Bahar sok. No:10 D:10\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api.useasa.com/api/home/create",
+									"protocol": "https",
+									"host": [
+										"api",
+										"useasa",
+										"com"
+									],
+									"path": [
+										"api",
+										"home",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Haneyi Görüntüle",
+							"id": "a77990cf-113d-47b4-b93d-42813c04f7cd",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.useasa.com/api/home/{{hane_Id}}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"useasa",
+										"com"
+									],
+									"path": [
+										"api",
+										"home",
+										"{{hane_Id}}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Haneyi Güncelleme",
+							"id": "f76f7d05-5c6a-4494-833a-687e4a01ded0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"title\": \"Evim\", \"iconId\": \"6277b858eb6a2cc9c58a1388\",\r\n\"city\": \"İstanbul\", \"district\": \"Büyükçekmece\", \"path\": \"19 Mayıs Bahar sok. No:10 D:10\"}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api.useasa.com/api/home/update/{{hane_Id}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"useasa",
+										"com"
+									],
+									"path": [
+										"api",
+										"home",
+										"update",
+										"{{hane_Id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Haneyi Sil",
+							"id": "ca5ff8ac-139d-4a76-b718-7cf88aced72a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://api.useasa.com/api/home/{{hane_Id}}/delete",
+									"protocol": "https",
+									"host": [
+										"api",
+										"useasa",
+										"com"
+									],
+									"path": [
+										"api",
+										"home",
+										"{{hane_Id}}",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "a80e92d9-889d-497f-a7a2-8b9919590537"
+				}
+			],
+			"id": "4a82c657-8cb2-4035-8da9-4624ed2faede",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2e13a38c-fcaf-4a20-b765-a28f7140a6aa",
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "6cf091e9-d74f-4367-aa41-1ecb3a4aa9c1",
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b0afd0f3-61d1-434d-bd1c-f28d57dc6cff",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6bf0e5c2-c5d1-40ac-8c91-08e5c153071e",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "d85ae7e9-1541-47d9-a8f4-b408945c66b4",
+			"key": "token",
+			"value": ""
+		},
+		{
+			"id": "86e92fae-9aed-470a-9a74-460a031d04be",
+			"key": "hane_Id",
+			"value": ""
+		},
+		{
+			"id": "0234f994-dd00-4f9e-b354-8b8f1deff279",
+			"key": "yenikisi_Id",
+			"value": ""
+		},
+		{
+			"id": "c24cc72e-593c-48ee-a66e-d6dc4f0213ea",
+			"key": "createdId",
+			"value": ""
+		}
+	]
+}
